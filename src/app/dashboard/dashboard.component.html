@@ -1,0 +1,28 @@
+<div class="card-container" >
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let item of configs">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{item.title}}</mat-card-title>
+          <mat-card-subtitle>{{item.name}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{item.desc}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a mat-icon-button color="primary">
+            <mat-icon>play_arrow</mat-icon>
+          </a>
+          <a mat-icon-button color="primary" routerLink="/editor/{{item.id}}">
+            <mat-icon>edit</mat-icon>
+          </a>
+          <a mat-icon-button color="primary" (click)="confirmDelete(item.id, item.name)">
+            <mat-icon>delete</mat-icon>
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    
+  </div>
+  
+</div>

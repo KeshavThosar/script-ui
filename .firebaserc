@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "scriptui": {
+      "hosting": {
+        "frontend": [
+          "scriptui"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "scriptui"
+  }
+}

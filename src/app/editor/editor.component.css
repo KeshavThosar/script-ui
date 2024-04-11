@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+  min-height: 40em;
+}
+
+.panel {
+  flex: 1;
+  padding: 20px;
+}
+
+.left-panel {
+  border-right: 1px solid #ccc;
+
+}
+
+.panel h2 {
+  margin-bottom: 10px;
+}
+
+.result {
+  flex: 1;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 90%;
+}
+
+.editor {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+.editor textarea{
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.cmdline {
+  font-family: monospace;
+}
+
+.input-name {
+  padding-right: 1em;
+}
+
+.popup {
+  position: absolute;
+  top: 0;
+  text-align: center;
+  width: 100%;
+  margin-top: 5em;
+  z-index: 10;
+  transition: transform 0.35s ease-in-out !important;
+}
+.popup > span {
+  color: #fff;
+  background-color: #5e5e5e;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+.show {
+  display: block;
+  transform: scale(1);
+}
+
+.hide{
+  transform: scale(0);
+}

@@ -1,0 +1,63 @@
+<div class="popup {{popupStatus}}">
+  <span>{{popupMessage}}</span>
+</div>
+<div class="container">
+  <div class="panel left-panel">
+      <mat-form-field>
+        <mat-label>Config Name</mat-label>
+        <input ngModel="{{ configName }}" matInput type="text" name="configname" #configname placeholder="Enter config name"  (keyup)="configName = configname.value" required/>
+      </mat-form-field>
+      <button mat-icon-button color="primary" (click)="saveConfig()">
+        <mat-icon>save</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" (click)="resetConfig()">
+        <mat-icon>restart_alt</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+      <mat-form-field class="editor">
+          <mat-label>Config</mat-label>
+          <textarea #yamlCode ngModel="{{yamlConfig}}" matInput rows="19" placeholder="Start adding YAML here" (keyup)="loadScriptUiConfig(yamlCode.value)" required>
+          </textarea>
+      </mat-form-field>
+    
+  </div>
+  <div class="panel right-panel">
+    <h2>Preview</h2>
+    <div class="result">
+      <h2>{{ scriptUiConfig.title }}</h2>
+      <p>{{ scriptUiConfig.desc }}</p>
+      <mat-divider></mat-divider>
+      <br>
+      <form class="example-form">
+        <mat-accordion>
+          <mat-expansion-panel expanded>
+            <mat-expansion-panel-header *ngIf="scriptUiConfig.inputs.length > 0" >
+              <mat-panel-title>
+                Inputs
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="input-section" *ngFor="let item of scriptUiConfig.inputs"  [ngSwitch]="item.type" >
+              <mat-form-field *ngSwitchCase="'text'"> 
+                <mat-label>{{item.name}}</mat-label>
+                <input ngModel="{{ item.value }}" matInput type="text" name="{{ item.name }}" id="config-{{item.name}}" placeholder="Enter {{ item.name }}" />
+              </mat-form-field>
+              <mat-form-field *ngSwitchCase="'number'" [ngSwitch]="item.type" > 
+                <mat-label>{{item.name}}</mat-label>
+                <input ngModel="{{ item.value }}" matInput type="number" name="{{ item.name }}" id="config-{{item.name}}" placeholder="Enter {{ item.name }}" />
+              </mat-form-field>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <br>
+        <mat-divider></mat-divider>
+        <p>Command to be executed</p>
+        <mat-form-field class="full-width cmdline">
+          <input matInput disabled value="{{scriptUiConfig.cmd}}">
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+</div>
+

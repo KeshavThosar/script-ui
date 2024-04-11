@@ -1,0 +1,10 @@
+<mat-toolbar color="primary" class="header">
+  <mat-toolbar-row>
+    <span>ScriptUI</span>
+    <span class="spacer"></span>
+    <a mat-button color="accent" routerLink="/dashboard">Dashboard</a>
+    <a mat-button color="accent" routerLink="/editor/new">Editor</a>
+    <a mat-flat-button *ngIf="!isLoggedIn" color="accent" routerLink="/login">Login</a>
+    <a mat-flat-button *ngIf="isLoggedIn" color="accent" (click)="logout()">Logout</a>
+  </mat-toolbar-row>
+</mat-toolbar>
